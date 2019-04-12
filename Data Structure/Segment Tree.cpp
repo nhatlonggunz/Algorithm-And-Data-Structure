@@ -7,6 +7,7 @@ int ll(int id) { return id << 1; }
 int rr(int id) { return (id << 1) + 1; }
 int mm(int l, int r) { return (l + r) >> 1; }
 
+// building IT
 void build(int id, int l, int r)
 {
     if(l == r) st[id] = a[l];
@@ -17,6 +18,7 @@ void build(int id, int l, int r)
     }
 }
 
+// Update IT
 void update(int id, int l, int r, int i, int val)
 {
     if(i < l || i > r) return;
@@ -29,6 +31,8 @@ void update(int id, int l, int r, int i, int val)
 }
 void update(int id, int val) { update(1, 1, n, id, val); }
 
+
+// Query IT
 int rmq(int id, int l, int r, int i, int j)
 {
     if(j < l || i > r) return -long(1e9);
@@ -40,6 +44,8 @@ int rmq(int id, int l, int r, int i, int j)
 }
 int rmq(int l, int r) { return rmq(1, 1, n, l, r); }
 
+
+// Main
 int main()
 {
     ios::sync_with_stdio(false);
