@@ -2,6 +2,15 @@
 #include <vector>
 using namespace std;
 
+/*
+	p[u] is parent of u
+	It is also sometimes root of the tree (as we use path compression)
+	Find(x) return root of the tree (set) containing x
+	Union(x, y) to combine two disjoint sets (tree) containing x and y
+	We use Union by rank
+	
+*/
+
 class DisjointSet
 {
 	private: vector<int> r, p;
