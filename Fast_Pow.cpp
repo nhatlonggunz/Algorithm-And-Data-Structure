@@ -1,3 +1,7 @@
+/**
+Calculate a^x in O(logx)
+**/
+
 #include <iostream>
 using namespace std;
 
