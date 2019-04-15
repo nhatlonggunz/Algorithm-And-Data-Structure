@@ -6,6 +6,16 @@ To see how to apply to a problem,
 look for QTREE problems in SPOJ
 */
 
+/**
+HLD Complexity:
+- Query: O(logn)
+- Initialize: O(n) for setting up dfs and O(n) for decomposition
+- Memory: O(n)
+
+which is faster and requires less memory than sparse table.
+However, the code is much longer.
+**/
+
 // Nguyen Cao Nhat Long
 // Pikachuuuuuuuuuuuuu
 #include <iostream>
