@@ -1,3 +1,27 @@
+/**
+For more explanation on Sparse Table, see Data Structure/SparseTable.cpp
+
+This code applies Sparse Table to find the LCA of u and v
+
+pa[u][i]: the 2^i parent of node u 
+The idea is to let u and v jump up 2^i nodes (i as large as possible)
+until direct parents of u and v, which are p[u] and p[v] are the same
+
+Complexity: 
+- Query: O(logn)
+- Initialize: O(nlogn)
+- Memory: O(nlogn)
+
+It is slower and requires more memory than Heavy Light Decomposition
+HLD Complexity:
+- Query: O(logn)
+- Initialize: O(n) for setting up dfs and O(n) for decomposition
+- Memory: O(n)
+
+
+However, Sparse Table is much shorter
+**/
+
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -28,6 +52,10 @@ void input()
     }
 }
 
+/**
+DFS to initialize
+**/
+
 void DFS(int u)
 {
     int v;
@@ -48,8 +76,11 @@ void setup()
 {
     root = 1, p[root] = -1, DFS(root), p[root] = 0;
 
-    for(int i = 1; i <= n; i++) pa[i][0] = p[i];
+    for(int i = 1; i <= n; i++) 
+		pa[i][0] = p[i];
 
+	// Setup Sparse Table
+	// pa[u][i]: 2^i parent of u
     for(int j = 1; j <= (int)log2(n); j++)
         for(int i = 1; i <= n; i++)
             if(h[i] >= (1 << j))
@@ -61,6 +92,7 @@ int LCA(int u, int v)
     int tmp;
     if(h[u] < h[v]) swap(u, v);
 
+	// Jump up u and v to have equal height
     while(h[u] > h[v])
     {
         tmp = (int)log2(h[u] - h[v]);
@@ -83,11 +115,14 @@ int LCA(int u, int v)
 
 int main()
 {
-    ios::sync_with_stdio(false); cin.tie();
+    ios::sync_with_stdio(false); 
+	cin.tie();		cout.tie(0);
+
     input();
     setup();
 
     int u, v, an;
+	
     while(q--)
     {
         cin >> u >> v;
