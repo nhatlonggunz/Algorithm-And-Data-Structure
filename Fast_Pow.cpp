@@ -5,11 +5,13 @@ Calculate a^x in O(logx)
 #include <iostream>
 using namespace std;
 
-int pow(int base, int exp)
+long long mod = 1e9 + 7LL;
+
+long long pow(long long base, int exp)
 {
-	if(exp == 0) return 1;
-	int tmp = pow(base, exp / 2);
-	return b & 1 ? base * tmp * tmp : tmp * tmp;
+	if(exp == 0) return 1LL;
+	long long tmp = pow(base, exp >> 1) % mod;
+	return exp & 1 ? (base * tmp * tmp) % mod : (tmp * tmp) % mod;
 }
 
 int main()

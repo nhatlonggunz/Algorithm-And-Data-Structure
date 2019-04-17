@@ -1,3 +1,8 @@
+/**
+Sliding Window with Deque (double-ended queue) 
+to find Min, Max in previous K elements in O(n)
+**/
+
 #include <iostream>
 #include <deque>
 #include <cstdio>

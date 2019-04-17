@@ -1,5 +1,5 @@
 /**
-Calculate (a * b) % mod in O(log2(x)) without overflow
+Calculate (a * b) % mod in O(log2(x)) so that it does not get overflow.
 **/
 
 /**
